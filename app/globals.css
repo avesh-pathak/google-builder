@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+  Café Circle AI — design tokens.
+  Warm cream surfaces, espresso text, one locked accent (caramel). No second
+  accent anywhere in the product.
+*/
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-outfit), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --color-cream-50: #fffdfa;
+  --color-cream-100: #fbf6ef;
+  --color-cream-200: #f5ece0;
+  --color-cream-300: #ecdfcd;
+  --color-cream-400: #dbc9ad;
+
+  --color-espresso-300: #b3a094;
+  --color-espresso-400: #98857a;
+  --color-espresso-500: #7b685c;
+  --color-espresso-600: #5c4a3f;
+  --color-espresso-700: #3f3027;
+  --color-espresso-800: #2b2018;
+  --color-espresso-900: #1d1510;
+
+  --color-caramel-50: #fdf4ea;
+  --color-caramel-100: #f9e6d3;
+  --color-caramel-200: #f0cda9;
+  --color-caramel-300: #e3ae7a;
+  --color-caramel-400: #d4914f;
+  --color-caramel-500: #c07c42;
+  --color-caramel-600: #a45f2c;
+  --color-caramel-700: #814a22;
+
+  --shadow-soft: 0 1px 2px rgba(43, 32, 24, 0.05), 0 12px 32px -18px rgba(43, 32, 24, 0.28);
+  --shadow-lifted: 0 2px 4px rgba(43, 32, 24, 0.06), 0 22px 48px -24px rgba(43, 32, 24, 0.34);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Hide scrollbars on the horizontal rails without losing keyboard scroll. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream-100);
+  color: var(--color-espresso-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-caramel-200);
+  color: var(--color-espresso-900);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-caramel-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+input[type="range"] {
+  accent-color: var(--color-caramel-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
