@@ -3,7 +3,6 @@ import { AIError, errorResponse } from "@/lib/ai/errors";
 import { jsonResponse, readBoundedBody } from "@/lib/ai/http";
 import { MAX_IMAGE_BYTES } from "@/lib/ai/schemas";
 
-export const runtime = "nodejs";
 export async function POST(request: Request) {
   try {
     const contentType = request.headers.get("content-type") || "";
